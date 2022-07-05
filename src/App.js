@@ -5,10 +5,18 @@ import Home from './pages/home/home';
 import SkinDetail from './components/skin-detail/skin-detail';
 import Cart from './pages/cart/cart';
 import AllSkins from './pages/all-skins/all-skins';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 	return (
-		<div className='min-h-screen flex flex-col overflow-x-hidden'>
+		<div className='min-h-screen flex flex-col'>
+			<ToastContainer
+				limit={3}
+				newestOnTop
+				position='bottom-right'
+				autoClose={2000}
+			/>
 			<Header />
 			<Routes>
 				<Route path='/' element={<Home />} />

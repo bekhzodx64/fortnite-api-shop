@@ -9,7 +9,9 @@ const Footer = () => {
 				</Link>
 
 				<p className='text-xl'>
-					<a href='##' target='blank'>
+					<a
+						href='https://github.com/bekhzodx64/fortnite-api-shop'
+						target='blank'>
 						Github repo
 					</a>
 				</p>
