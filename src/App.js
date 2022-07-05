@@ -2,8 +2,9 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Home from './pages/home/home';
-import AllSkins from './pages/all-skins/all-skins';
 import SkinDetail from './components/skin-detail/skin-detail';
+import Cart from './pages/cart/cart';
+import AllSkins from './pages/all-skins/all-skins';
 
 const App = () => {
 	return (
@@ -11,6 +12,7 @@ const App = () => {
 			<Header />
 			<Routes>
 				<Route path='/' element={<Home />} />
+				<Route path='/cart' element={<Cart />} />
 				<Route path='/all-skins' element={<AllSkins />} />
 				<Route path=':skinId' element={<SkinDetail />} />
 			</Routes>

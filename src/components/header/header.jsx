@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AiOutlineShopping } from 'react-icons/ai';
 
 const Header = () => {
 	return (
@@ -12,7 +13,16 @@ const Header = () => {
 				<div className='font-bold text-3xl uppercase text-center'>
 					<Link to='/'>fortnite.api</Link>
 				</div>
-				<div className='justify-self-end'>actions</div>
+				<div className='justify-self-end'>
+					<Link to='/cart'>
+						<div className='relative flex items-center'>
+							<AiOutlineShopping className='w-12 h-12' />
+							<span className='absolute top-1/3 right-1/2 translate-x-1/2  w-6 h-6 text-white font-bold flex justify-center items-center select-none'>
+								3
+							</span>
+						</div>
+					</Link>
+				</div>
 			</div>
 		</header>
 	);

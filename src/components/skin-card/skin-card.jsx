@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/cartSlice';
 
 const SkinCard = ({ skin }) => {
+	const dispatch = useDispatch();
 	const { displayName, mainId } = skin;
 	const id = mainId.toLowerCase();
 	const name = displayName.toLowerCase();
@@ -9,6 +12,10 @@ const SkinCard = ({ skin }) => {
 	const { background } = skin.displayAssets[0];
 
 	const navigate = useNavigate();
+
+	const handleAddToCart = () => {
+		dispatch(addToCart(skin));
+	};
 
 	const onNavigateHandler = () => {
 		navigate(`/${id}`);
@@ -26,7 +33,9 @@ const SkinCard = ({ skin }) => {
 					<span>{finalPrice} руб.</span>
 				</div>
 				<div className='flex justify-center'>
-					<button className='bg-blue-600 text-white border border-transparent px-7 py-2 select-none hover:bg-transparent hover:text-blue-600 hover:border-blue-600'>
+					<button
+						className='bg-blue-600 text-white border border-transparent px-7 py-2 select-none hover:bg-transparent hover:text-blue-600 hover:border-blue-600'
+						onClick={handleAddToCart}>
 						купить
 					</button>
 				</div>
