@@ -18,7 +18,7 @@ const Home = () => {
 					{skins
 						.filter((_, index) => index < 5)
 						.map((skin) => (
-							<SkinCard key={skin.mainId} skin={skin} />
+							<SkinCard key={skin.id} skin={skin} />
 						))}
 				</div>
 			)}

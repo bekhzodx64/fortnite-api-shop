@@ -56,22 +56,22 @@ const Cart = () => {
 							<li className='justify-self-center'>Общая сумма</li>
 						</ul>
 						{cart.cartItems?.map((cartItem) => {
-							const id = cartItem.mainId;
+							const id = cartItem.id;
 
 							const onNavigateHandler = () => {
 								navigate(`/${id}`);
 							};
 							return (
 								<div
-									key={cartItem.mainId}
+									key={cartItem.id}
 									className='grid grid-cols-5 py-5 items-center'>
 									<div className='col-span-2 flex gap-5'>
 										<div
 											className='w-36 h-36 cursor-pointer'
 											onClick={onNavigateHandler}>
 											<img
-												src={cartItem.displayAssets[0].background}
-												alt={cartItem.displayName}
+												src={cartItem.images.icon_background}
+												alt={cartItem.name}
 												className='w-full h-full object-cover'
 											/>
 										</div>
@@ -79,10 +79,10 @@ const Cart = () => {
 										<div className='w-full space-y-5'>
 											<div>
 												<h2 className='text-xl line-clamp-1'>
-													{cartItem.displayName.toLowerCase()}
+													{cartItem.name.toLowerCase()}
 												</h2>
 												<p className='line-clamp-2 text-sm'>
-													{cartItem.displayDescription}
+													{cartItem.description}
 												</p>
 											</div>
 											<div>
@@ -95,7 +95,11 @@ const Cart = () => {
 										</div>
 									</div>
 									<div className='justify-self-center'>
-										<span> {cartItem.price.finalPrice} руб.</span>
+										<span>
+											{cartItem.price === 0
+												? 'Бесплатно'
+												: `${cartItem.price} руб.`}
+										</span>
 									</div>
 									<div className='justify-self-center'>
 										<div className='border'>
@@ -118,7 +122,9 @@ const Cart = () => {
 									</div>
 									<div className='justify-self-center'>
 										<span>
-											{cartItem.price.finalPrice * cartItem.cartQuantity} руб.
+											{cartItem.price === 0
+												? 'Бесплатно'
+												: `${cartItem.price * cartItem.cartQuantity} руб.`}
 										</span>
 									</div>
 								</div>

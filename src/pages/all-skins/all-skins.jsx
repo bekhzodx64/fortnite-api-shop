@@ -15,9 +15,11 @@ const AllSkins = () => {
 				<Loader />
 			) : (
 				<div className='grid grid-cols-5 place-items-center gap-10 py-5'>
-					{skins.map((skin) => (
-						<SkinCard key={skin.mainId} skin={skin} />
-					))}
+					{skins
+						.filter((_, index) => index < 50)
+						.map((skin) => (
+							<SkinCard key={skin.id} skin={skin} />
+						))}
 				</div>
 			)}
 		</div>

@@ -3,8 +3,11 @@ import { API_KEY } from '../../config';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Loader from '../templates/loader';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/cartSlice';
 
 const SkinDetail = () => {
+	const dispatch = useDispatch();
 	const { skinId } = useParams();
 	const [skin, setSkin] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -21,6 +24,10 @@ const SkinDetail = () => {
 				setIsLoading(false);
 			});
 	}, [skinId]);
+
+	const handleAddToCart = () => {
+		dispatch(addToCart(skin));
+	};
 
 	return (
 		<div className='container my-auto py-5'>
@@ -72,7 +79,9 @@ const SkinDetail = () => {
 							</div>
 
 							<div>
-								<button className='bg-blue-600 text-white border border-transparent px-7 py-2 select-none hover:bg-transparent hover:text-blue-600 hover:border-blue-600'>
+								<button
+									className='bg-blue-600 text-white border border-transparent px-7 py-2 select-none hover:bg-transparent hover:text-blue-600 hover:border-blue-600'
+									onClick={() => handleAddToCart(skin)}>
 									купить
 								</button>
 							</div>

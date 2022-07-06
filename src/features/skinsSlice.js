@@ -7,12 +7,12 @@ const initialState = {
 };
 
 export const skinsFetch = createAsyncThunk('skins/skinsFetch', async () => {
-	const res = await fetch('https://fortniteapi.io/v2/shop?lang=ru', {
+	const res = await fetch('https://fortniteapi.io/v2/items/list?lang=ru', {
 		headers: {
 			Authorization: API_KEY,
 		},
 	}).then((res) => res.json());
-	return res.shop;
+	return res.items;
 });
 
 const skinsSlice = createSlice({

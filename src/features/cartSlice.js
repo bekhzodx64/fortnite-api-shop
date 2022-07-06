@@ -15,24 +15,7 @@ const cartSlice = createSlice({
 	reducers: {
 		addToCart: (state, action) => {
 			const itemIndex = state.cartItems.findIndex(
-				(item) => item.mainId === action.payload.mainId
-			);
-
-			if (itemIndex >= 0) {
-				state.cartItems[itemIndex].cartQuantity += 1;
-				toast.info(
-					`Увеличено количество товара ${state.cartItems[itemIndex].displayName} `
-				);
-			} else {
-				const tempProduct = { ...action.payload, cartQuantity: 1 };
-				state.cartItems.push(tempProduct);
-				toast.success(`${action.payload.displayName} добавлено в корзину`);
-			}
-			localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
-		},
-		addToCartDetail: (state, action) => {
-			const itemIndex = state.cartItems.findIndex(
-				(item) => item.mainId === action.payload.mainId
+				(item) => item.id === action.payload.id
 			);
 
 			if (itemIndex >= 0) {
@@ -47,33 +30,37 @@ const cartSlice = createSlice({
 			}
 			localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
 		},
+		addToCartDetail: (state, action) => {
+			// const tempProduct = { ...action.payload, cartQuantity: 1 };
+			// state.cartItems.push(tempProduct);
+		},
 		removeFromCart: (state, action) => {
 			const nextCartItems = state.cartItems.filter(
-				(cartItem) => cartItem.mainId !== action.payload.mainId
+				(cartItem) => cartItem.id !== action.payload.id
 			);
 
 			state.cartItems = nextCartItems;
 
 			localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
 
-			toast.error(`${action.payload.displayName} удалено с корзины`);
+			toast.error(`${action.payload.name} удалено с корзины`);
 		},
 		decreaseCart: (state, action) => {
 			const itemIndex = state.cartItems.findIndex(
-				(cartItem) => cartItem.mainId === action.payload.mainId
+				(cartItem) => cartItem.id === action.payload.id
 			);
 
 			if (state.cartItems[itemIndex].cartQuantity > 1) {
 				state.cartItems[itemIndex].cartQuantity -= 1;
-				toast.info(`Количество ${action.payload.displayName} уменьшено`);
+				toast.info(`Количество ${action.payload.name} уменьшено`);
 			} else if (state.cartItems[itemIndex].cartQuantity === 1) {
 				const nextCartItems = state.cartItems.filter(
-					(cartItem) => cartItem.mainId !== action.payload.mainId
+					(cartItem) => cartItem.id !== action.payload.id
 				);
 
 				state.cartItems = nextCartItems;
 
-				toast.error(`${action.payload.displayName} удалено из корзины`);
+				toast.error(`${action.payload.name} удалено из корзины`);
 			}
 			localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
 		},
@@ -85,11 +72,8 @@ const cartSlice = createSlice({
 		getTotals: (state, action) => {
 			let { total, quantity } = state.cartItems.reduce(
 				(cartTotal, cartItem) => {
-					const {
-						price: { finalPrice },
-						cartQuantity,
-					} = cartItem;
-					const itemTotal = finalPrice * cartQuantity;
+					const { price, cartQuantity } = cartItem;
+					const itemTotal = price * cartQuantity;
 					cartTotal.total += itemTotal;
 					cartTotal.quantity += cartQuantity;
 
