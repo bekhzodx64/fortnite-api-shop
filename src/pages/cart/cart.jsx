@@ -105,14 +105,22 @@ const Cart = () => {
 										<div className='border'>
 											<button
 												type='button'
-												className='py-3 px-5'
+												className={`py-3 px-5 ${
+													cartItem.price === 0 &&
+													'bg-gray-100 pointer-events-none select-none'
+												}`}
 												onClick={() => handleDecreaseCart(cartItem)}>
 												-
 											</button>
-											<span className='px-2'>{cartItem.cartQuantity}</span>
+											<span className='px-4 select-none'>
+												{cartItem.cartQuantity}
+											</span>
 											<button
 												type='button'
-												className='py-3 px-5'
+												className={`py-3 px-5 ${
+													cartItem.price === 0 &&
+													'bg-gray-100 pointer-events-none select-none'
+												}`}
 												onClick={() => {
 													handleIncreaseCart(cartItem);
 												}}>
