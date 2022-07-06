@@ -32,6 +32,10 @@ const Cart = () => {
 		dispatch(clearCart());
 	};
 
+	const handleToTop = () => {
+		window.scrollTo(0, 0);
+	};
+
 	return (
 		<div className='container py-5'>
 			<h2 className='text-center py-5 font-bold text-2xl uppercase'>корзина</h2>
@@ -40,7 +44,10 @@ const Cart = () => {
 				<div className='space-y-3'>
 					<p className='text-center text-2xl'>Вы еще ничего не добавили</p>
 					<div className='flex justify-center text-gray-500'>
-						<Link to='/all-skins' className='flex items-center space-x-3'>
+						<Link
+							to='/all-skins'
+							className='flex items-center space-x-3'
+							onClick={handleToTop}>
 							<BsArrowLeft className='text-xl' />
 							<span className='text-xl'>К товарам</span>
 						</Link>
@@ -167,7 +174,8 @@ const Cart = () => {
 						<div className='text-gray-500'>
 							<Link
 								to='/all-skins'
-								className='items-center space-x-3 inline-flex'>
+								className='items-center space-x-3 inline-flex'
+								onClick={handleToTop}>
 								<BsArrowLeft className='text-xl' />
 								<span>Продолжить покупку</span>
 							</Link>

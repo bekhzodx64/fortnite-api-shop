@@ -13,19 +13,27 @@ const Header = () => {
 		dispatch(getTotals());
 	}, [cart, dispatch]);
 
+	const handleToTop = () => {
+		window.scrollTo(0, 0);
+	};
+
 	return (
 		<header className='bg-blue-600 sticky top-0'>
 			<div className='container text-white py-5 grid grid-cols-3 items-center'>
 				<ul>
 					<li>
-						<Link to='/all-skins'>Все скины</Link>
+						<Link to='/all-skins' onClick={handleToTop}>
+							Все скины
+						</Link>
 					</li>
 				</ul>
 				<div className='font-bold text-3xl uppercase text-center'>
-					<Link to='/'>fortnite.api</Link>
+					<Link to='/' onClick={handleToTop}>
+						fortnite.api
+					</Link>
 				</div>
 				<div className='justify-self-end'>
-					<Link to='/cart'>
+					<Link to='/cart' onClick={handleToTop}>
 						<div className='relative flex items-center'>
 							<AiOutlineShopping className='w-12 h-12' />
 							<span className='absolute top-[38%] text-sm right-1/2 translate-x-1/2  w-6 h-6 text-white font-bold flex justify-center items-center select-none'>

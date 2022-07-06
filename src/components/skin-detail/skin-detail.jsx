@@ -82,7 +82,7 @@ const SkinDetail = () => {
 								<button
 									className='bg-blue-600 text-white border border-transparent px-7 py-2 select-none hover:bg-transparent hover:text-blue-600 hover:border-blue-600'
 									onClick={() => handleAddToCart(skin)}>
-									купить
+									{skin.price === 0 ? 'Получить' : 'Купить'}
 								</button>
 							</div>
 						</div>
