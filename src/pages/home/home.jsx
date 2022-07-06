@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import SkinCard from '../../components/skin-card/skin-card';
+import Loader from '../../components/templates/loader';
 
 const Home = () => {
 	const { skins, isLoading } = useSelector((state) => state.skin);
@@ -10,15 +11,17 @@ const Home = () => {
 				новые скины
 			</h2>
 
-			<div className='grid grid-cols-5 place-items-center gap-10 py-5'>
-				{isLoading ? (
-					<span>Loading...</span>
-				) : (
-					skins
+			{isLoading ? (
+				<Loader />
+			) : (
+				<div className='grid grid-cols-5 place-items-center gap-10 py-5'>
+					{skins
 						.filter((_, index) => index < 5)
-						.map((skin) => <SkinCard key={skin.mainId} skin={skin} />)
-				)}
-			</div>
+						.map((skin) => (
+							<SkinCard key={skin.mainId} skin={skin} />
+						))}
+				</div>
+			)}
 		</div>
 	);
 };

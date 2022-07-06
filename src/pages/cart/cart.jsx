@@ -78,10 +78,12 @@ const Cart = () => {
 
 										<div className='w-full space-y-5'>
 											<div>
-												<h2 className='text-xl first-letter:uppercase'>
+												<h2 className='text-xl line-clamp-1'>
 													{cartItem.displayName.toLowerCase()}
 												</h2>
-												<p>{cartItem.displayDescription}</p>
+												<p className='line-clamp-2 text-sm'>
+													{cartItem.displayDescription}
+												</p>
 											</div>
 											<div>
 												<button

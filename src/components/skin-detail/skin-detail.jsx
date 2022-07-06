@@ -2,13 +2,12 @@ import { useEffect } from 'react';
 import { API_KEY } from '../../config';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux/es/exports';
+import Loader from '../templates/loader';
 
 const SkinDetail = () => {
 	const { skinId } = useParams();
 	const [skin, setSkin] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const dispatch = useDispatch();
 
 	useEffect(() => {
 		fetch(`https://fortniteapi.io/v2/items/get?id=${skinId}&lang=ru`, {
@@ -26,7 +25,7 @@ const SkinDetail = () => {
 	return (
 		<div className='container my-auto py-5'>
 			{isLoading ? (
-				<h2>Loading...</h2>
+				<Loader />
 			) : (
 				<div>
 					<h2 className='text-center py-5 font-bold text-2xl uppercase'>
