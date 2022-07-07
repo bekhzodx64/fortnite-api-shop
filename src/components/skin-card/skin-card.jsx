@@ -19,8 +19,13 @@ const SkinCard = ({ skin }) => {
 
 	return (
 		<div className='w-full shadow'>
-			<div className='select-none cursor-pointer w-[216px] h-[216px] bg-gray-200'>
-				<img src={icon_background} alt={name} onClick={onNavigateHandler} />
+			<div className='select-none cursor-pointer w-[216px] h-[216px] bg-gray-200 group overflow-hidden'>
+				<img
+					src={icon_background}
+					alt={name}
+					onClick={onNavigateHandler}
+					className='group-hover:scale-110 transition-all'
+				/>
 			</div>
 			<div className='space-y-2 py-3 px-2'>
 				<h2 className='line-clamp-1 capitalize'>{name}</h2>
