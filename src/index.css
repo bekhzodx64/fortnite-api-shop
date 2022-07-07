@@ -15,4 +15,24 @@
 		border: 4px solid transparent;
 		@apply bg-blue-600 rounded-full bg-clip-content;
 	}
+
+	.pagination {
+		@apply flex items-center justify-center space-x-3 py-10 select-none;
+	}
+
+	.pagination-num {
+		@apply w-9 h-9 rounded-full flex justify-center items-center border shadow hover:bg-gray-100;
+	}
+
+	.pagination-nav {
+		@apply rounded-lg border shadow px-4 py-2 hover:bg-gray-100;
+	}
+
+	.pagination-active {
+		@apply bg-blue-600 text-white border-blue-600;
+	}
+
+	.pagination-disabled {
+		@apply opacity-40 pointer-events-none;
+	}
 }

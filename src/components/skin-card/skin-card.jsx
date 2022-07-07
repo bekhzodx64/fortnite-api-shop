@@ -14,12 +14,12 @@ const SkinCard = ({ skin }) => {
 	};
 
 	const onNavigateHandler = () => {
-		navigate(`/${id}`);
+		navigate(`/all-products/${id}`);
 	};
 
 	return (
 		<div className='w-full shadow'>
-			<div className='select-none cursor-pointer'>
+			<div className='select-none cursor-pointer w-[216px] h-[216px] bg-gray-200'>
 				<img src={icon_background} alt={name} onClick={onNavigateHandler} />
 			</div>
 			<div className='space-y-2 py-3 px-2'>

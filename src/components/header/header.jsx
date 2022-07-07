@@ -22,9 +22,7 @@ const Header = () => {
 			<div className='container text-white py-5 grid grid-cols-3 items-center'>
 				<ul>
 					<li>
-						<Link to='/all-skins' onClick={handleToTop}>
-							Все скины
-						</Link>
+						<Link to='/all-products'>Все скины</Link>
 					</li>
 				</ul>
 				<div className='font-bold text-3xl uppercase text-center'>

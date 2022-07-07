@@ -45,7 +45,7 @@ const Cart = () => {
 					<p className='text-center text-2xl'>Вы еще ничего не добавили</p>
 					<div className='flex justify-center text-gray-500'>
 						<Link
-							to='/all-skins'
+							to='/all-products'
 							className='flex items-center space-x-3'
 							onClick={handleToTop}>
 							<BsArrowLeft className='text-xl' />
@@ -66,7 +66,7 @@ const Cart = () => {
 							const id = cartItem.id;
 
 							const onNavigateHandler = () => {
-								navigate(`/${id}`);
+								navigate(`/all-products/${id}`);
 							};
 							return (
 								<div
@@ -173,7 +173,7 @@ const Cart = () => {
 
 						<div className='text-gray-500'>
 							<Link
-								to='/all-skins'
+								to='/all-products'
 								className='items-center space-x-3 inline-flex'
 								onClick={handleToTop}>
 								<BsArrowLeft className='text-xl' />

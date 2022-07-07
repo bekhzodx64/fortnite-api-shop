@@ -8,12 +8,12 @@ import { addToCart } from '../../features/cartSlice';
 
 const SkinDetail = () => {
 	const dispatch = useDispatch();
-	const { skinId } = useParams();
+	const { id } = useParams();
 	const [skin, setSkin] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		fetch(`https://fortniteapi.io/v2/items/get?id=${skinId}&lang=ru`, {
+		fetch(`https://fortniteapi.io/v2/items/get?id=${id}&lang=ru`, {
 			headers: {
 				Authorization: API_KEY,
 			},
@@ -23,7 +23,7 @@ const SkinDetail = () => {
 				setSkin(data.item);
 				setIsLoading(false);
 			});
-	}, [skinId]);
+	}, [id]);
 
 	const handleAddToCart = () => {
 		dispatch(addToCart(skin));
@@ -40,7 +40,7 @@ const SkinDetail = () => {
 					</h2>
 
 					<div className='flex max-w-4xl border mx-auto shadow-md items-center'>
-						<div className='select-none w-80 h-80'>
+						<div className='select-none w-80 h-80 bg-gray-100'>
 							<img
 								src={skin.images.background}
 								alt={skin.name}
@@ -60,7 +60,9 @@ const SkinDetail = () => {
 
 							<div>
 								<span className='font-bold'>Цена: </span>
-								<span>{skin.price} руб.</span>
+								<span>
+									{skin.price === 0 ? 'Бесплатно' : `${skin.price} руб.`}
+								</span>
 							</div>
 
 							<div>
