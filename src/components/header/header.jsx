@@ -18,7 +18,7 @@ const Header = () => {
 	};
 
 	return (
-		<header className='bg-blue-600 sticky top-0'>
+		<header className='bg-blue-600 sticky top-0 z-50'>
 			<div className='container text-white py-5 grid grid-cols-3 items-center'>
 				<ul>
 					<li>

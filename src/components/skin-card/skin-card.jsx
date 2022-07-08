@@ -19,12 +19,12 @@ const SkinCard = ({ skin }) => {
 
 	return (
 		<div className='w-full shadow'>
-			<div className='select-none cursor-pointer w-[216px] h-[216px] bg-gray-200 group overflow-hidden'>
+			<div className='select-none cursor-pointer h-[250px] bg-gray-200 group overflow-hidden'>
 				<img
 					src={icon_background}
 					alt={name}
 					onClick={onNavigateHandler}
-					className='group-hover:scale-110 transition-all'
+					className='group-hover:scale-110 transition-all will-change-transform w-full h-full object-cover'
 				/>
 			</div>
 			<div className='space-y-2 py-3 px-2'>
