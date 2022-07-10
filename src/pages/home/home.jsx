@@ -6,7 +6,7 @@ const Home = () => {
 	const { skins, isLoading } = useSelector((state) => state.skin);
 
 	return (
-		<div className='container my-auto'>
+		<div className='container'>
 			<h2 className='text-center py-5 font-bold text-2xl uppercase'>
 				новые скины
 			</h2>
