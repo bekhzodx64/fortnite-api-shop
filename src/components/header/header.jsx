@@ -39,7 +39,7 @@ const Header = () => {
 		return skins.filter((skin) =>
 			skin.name.toLowerCase().includes(searchValue)
 		);
-	}, [searchValue]);
+	}, [searchValue, skins]);
 
 	const handleShowSearch = () => {
 		setShowSearch(!showSearch);
