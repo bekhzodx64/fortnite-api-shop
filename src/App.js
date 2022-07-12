@@ -10,7 +10,7 @@ import Layout from './components/templates/layout';
 const App = () => {
 	return (
 		<div className='min-h-screen flex flex-col'>
-			<Routes>
+			<Routes basename='/fortnite-api-shop'>
 				<Route path='/' element={<Layout />}>
 					<Route index element={<Home />} />
 					<Route path='all-products' element={<AllSkins />} />
