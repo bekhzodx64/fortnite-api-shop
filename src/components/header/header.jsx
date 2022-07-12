@@ -1,39 +1,27 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useMemo, useState, useTransition } from 'react';
 import { AiOutlineShopping } from 'react-icons/ai';
-import { useSelector, useDispatch } from 'react-redux/es/exports';
-import { getTotals } from '../../features/cartSlice';
-import { useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { RiCloseCircleLine } from 'react-icons/ri';
-import { useState } from 'react';
-import { API_KEY } from '../../config';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { getTotals } from '../../features/cartSlice';
 
 const Header = () => {
 	const dispatch = useDispatch();
 	const { cartTotalQuantity } = useSelector((state) => state.cart);
 	const { skins } = useSelector((state) => state.skin);
 	const cart = useSelector((state) => state.cart);
+
 	const [searchValue, setSearchValue] = useState('');
+
 	const [showSearch, setShowSearch] = useState(false);
+	const navigate = useNavigate();
+
+	const [isPending, startTransition] = useTransition();
 
 	useEffect(() => {
 		dispatch(getTotals());
 	}, [cart, dispatch]);
-
-	useEffect(() => {
-		const res = async () => {
-			await fetch(`https://fortniteapi.io/v2/items/list?lang=ru`, {
-				headers: {
-					Authorization: API_KEY,
-				},
-			}).then((res) => res.json());
-		};
-		return res.filter((item) => {
-			return item.name.toLowerCase().includes(searchValue);
-		});
-	}, [searchValue]);
-
-	useEffect(() => {}, []);
 
 	const handleToTop = () => {
 		window.scrollTo(0, 0);
@@ -42,23 +30,20 @@ const Header = () => {
 	const onSearchChange = (e) => {
 		const valueToLowerCase = e.target.value.toLowerCase();
 		setSearchValue(valueToLowerCase);
+		startTransition(() => {
+			setSearchValue(e.target.value);
+		});
 	};
 
-	// function handleSearch() {
-	// 	return skins.filter((skin) => {
-	// 		return skin.name.toLowerCase().includes(searchValue);
-	// 	});
-	// }
-
-	// const filteredSkins = handleSearch();
+	const filteredItems = useMemo(() => {
+		return skins.filter((skin) =>
+			skin.name.toLowerCase().includes(searchValue)
+		);
+	}, [searchValue]);
 
 	const handleShowSearch = () => {
 		setShowSearch(!showSearch);
 	};
-
-	// const onNavigateHandler = () => {
-	// 	navigate(`/all-products/${id}`);
-	// };
 
 	return (
 		<header className='bg-blue-600 sticky top-0 z-50'>
@@ -86,20 +71,32 @@ const Header = () => {
 							<div className='absolute w-96 right-0 pt-6'>
 								{searchValue && (
 									<div className='bg-white shadow-md py-3 px-2 overflow-y-auto max-h-72 space-y-2 text-black'>
-										{/* {filteredSkins.map((filteredSkin) => (
-											<div
-												key={filteredSkin.id}
-												className='border flex space-x-3'>
-												<div className='max-w-[80px] w-full h-20 border-r'>
-													<img
-														src={filteredSkin.images.icon}
-														alt={filteredSkin.name}
-														className='w-full h-full object-cover'
-													/>
-												</div>
-												<p>{filteredSkin.name}</p>
-											</div>
-										))} */}
+										{isPending ? (
+											<p className='text-center py-2'>Поиск...</p>
+										) : (
+											filteredItems.map((filteredSkin) => {
+												const onNavigateHandler = () => {
+													navigate(`/all-products/${filteredSkin.id}`);
+													setShowSearch(false);
+													setSearchValue('');
+												};
+												return (
+													<div
+														key={filteredSkin.id}
+														className='border flex space-x-3 cursor-pointer'
+														onClick={onNavigateHandler}>
+														<div className='max-w-[80px] w-full h-20 border-r'>
+															<img
+																src={filteredSkin.images.icon}
+																alt={filteredSkin.name}
+																className='w-full h-full object-cover'
+															/>
+														</div>
+														<p>{filteredSkin.name}</p>
+													</div>
+												);
+											})
+										)}
 									</div>
 								)}
 							</div>
