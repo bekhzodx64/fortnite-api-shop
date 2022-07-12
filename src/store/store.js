@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import skinsReducer, { skinsFetch } from '../features/skinsSlice';
 import cartReducer from '../features/cartSlice';
+import skinsReducer, { skinsFetch } from '../features/skinsSlice';
 
 export const store = configureStore({
 	reducer: {

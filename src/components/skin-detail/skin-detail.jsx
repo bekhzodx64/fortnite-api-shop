@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
-import { API_KEY } from '../../config';
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import Loader from '../templates/loader';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { API_KEY } from '../../config';
 import { addToCart } from '../../features/cartSlice';
+import Loader from '../templates/loader';
 
 const SkinDetail = () => {
 	const dispatch = useDispatch();

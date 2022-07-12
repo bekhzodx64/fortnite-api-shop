@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { BsArrowLeft } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
 	return (

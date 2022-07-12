@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addToCart } from '../../features/cartSlice';
 
 const SkinCard = ({ skin }) => {

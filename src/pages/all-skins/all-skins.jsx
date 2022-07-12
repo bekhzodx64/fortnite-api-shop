@@ -1,9 +1,8 @@
+import { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import { useSelector } from 'react-redux';
 import SkinCard from '../../components/skin-card/skin-card';
 import Loader from '../../components/templates/loader';
-import ReactPaginate from 'react-paginate';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const AllSkins = () => {
 	const { skins, isLoading } = useSelector((state) => state.skin);

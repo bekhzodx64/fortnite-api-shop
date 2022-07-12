@@ -1,11 +1,11 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/home/home';
-import SkinDetail from './components/skin-detail/skin-detail';
-import Cart from './pages/cart/cart';
-import AllSkins from './pages/all-skins/all-skins';
+import { Route, Routes } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import NotFound from './pages/not-found/not-found';
+import SkinDetail from './components/skin-detail/skin-detail';
 import Layout from './components/templates/layout';
+import AllSkins from './pages/all-skins/all-skins';
+import Cart from './pages/cart/cart';
+import Home from './pages/home/home';
+import NotFound from './pages/not-found/not-found';
 
 const App = () => {
 	return (

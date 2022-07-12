@@ -1,14 +1,11 @@
-import { Link } from 'react-router-dom';
 import { BsArrowLeft } from 'react-icons/bs';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-	removeFromCart,
-	decreaseCart,
-	addToCart,
-	clearCart,
-} from '../../features/cartSlice';
-import { useNavigate } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import {
+	addToCart,
+	clearCart, decreaseCart, removeFromCart
+} from '../../features/cartSlice';
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart);
