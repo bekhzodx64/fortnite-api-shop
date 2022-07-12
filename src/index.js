@@ -7,7 +7,7 @@ import { store } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<BrowserRouter>
+	<BrowserRouter basename='/fortnite-api-shop'>
 		<Provider store={store}>
 			<App />
 		</Provider>
