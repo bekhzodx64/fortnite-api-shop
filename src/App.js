@@ -11,7 +11,7 @@ const App = () => {
 	return (
 		<div className='min-h-screen flex flex-col'>
 			<Routes>
-				<Route path='/fortnite-api-shop' element={<Layout />}>
+				<Route path='/' element={<Layout />}>
 					<Route index element={<Home />} />
 					<Route path='all-products' element={<AllSkins />} />
 					<Route path='all-products/:id' element={<SkinDetail />} />
