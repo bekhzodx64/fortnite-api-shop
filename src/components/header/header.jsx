@@ -145,7 +145,7 @@ const Header = () => {
 				</div>
 			</div>
 
-			{!showMenu && (
+			{showMenu && (
 				<div
 					className='fixed right-0 bottom-0 left-0 top-[77px] backdrop-blur-md bg-black/30 sm:hidden'
 					onClick={handleShowMenu}
