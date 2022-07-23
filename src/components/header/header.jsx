@@ -137,9 +137,9 @@ const Header = () => {
 						onClick={handleShowMenu}
 					>
 						{showMenu ? (
-							<CgMenuGridO className='text-4xl' />
-						) : (
 							<FaWindowClose className='text-4xl' />
+						) : (
+							<CgMenuGridO className='text-4xl' />
 						)}
 					</button>
 				</div>
